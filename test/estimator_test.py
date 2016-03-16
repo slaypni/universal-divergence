@@ -12,14 +12,14 @@ from estimator import estimate  # noqa
 
 class EstimatorTestCase(unittest.TestCase):
     def setUp(self):
-        obs1 = np.concatenate((np.random.randn(100, 50),
-                              10 + np.random.randn(300, 50)))
+        obs1 = np.concatenate((np.random.randn(100, 20),
+                              10 + np.random.randn(300, 20)))
         g1 = mixture.GMM(n_components=2).fit(obs1)
         self.x1 = g1.sample(500)
         self.y1 = g1.sample(400)
 
-        obs2 = np.concatenate((np.random.randn(200, 50),
-                              5 + np.random.randn(200, 50)))
+        obs2 = np.concatenate((np.random.randn(200, 20),
+                              5 + np.random.randn(200, 20)))
         g2 = mixture.GMM(n_components=2).fit(obs2)
         self.x2 = g2.sample(500)
         self.y2 = g2.sample(400)

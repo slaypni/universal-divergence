@@ -17,7 +17,7 @@ Example
 
 ::
 
-  from __futere__ import print_function
+  from __future__ import print_function
 
   import numpy as np
   from universal_divergence import estimate

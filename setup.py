@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
     name='universal-divergence',
-    version='0.1.0',
+    version='0.2.0',
     author='Kazuaki Tanida',
     url='https://github.com/slaypni/universal-divergence',
     description='A divergence estimator of two sets of samples.',
@@ -18,6 +18,6 @@ setup(
     keywords=['KL', 'Kullback-Leibler', 'divergence', 'information measure'],
     package_dir={'universal_divergence': 'src'},
     packages=['universal_divergence'],
-    install_requires=['numpy', 'scipy'],
+    install_requires=['numpy', 'scipy', 'joblib'],
     classifiers=classifiers
 )
