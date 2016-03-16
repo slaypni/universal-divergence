@@ -77,18 +77,16 @@ def __get_distance(a, tree, X_tree, Y_tree, k, default_offset):
 
 
 def __calc_nu_rho(x, X_tree, Y_tree, k):
-    rho = partial(__get_distance,
-                  tree=X_tree, X_tree=X_tree, Y_tree=Y_tree,
-                  k=k, default_offset=1)
-    nu = partial(__get_distance,
-                 tree=Y_tree, X_tree=X_tree, Y_tree=Y_tree,
-                 k=k, default_offset=0)
+    rho = partial(__get_distance, tree=X_tree, default_offset=1,
+                  X_tree=X_tree, Y_tree=Y_tree, k=k)
+    nu = partial(__get_distance, tree=Y_tree, default_offset=0,
+                 X_tree=X_tree, Y_tree=Y_tree, k=k)
     return np.log(nu(x) / rho(x))
 
 
 def __calc_l_k(x, X_tree, Y_tree):
-    _l = partial(__get_epsilon_sample_num,
-                 tree=X_tree, X_tree=X_tree, Y_tree=Y_tree, default_offset=1)
-    _k = partial(__get_epsilon_sample_num,
-                 tree=Y_tree, X_tree=X_tree, Y_tree=Y_tree, default_offset=0)
+    _l = partial(__get_epsilon_sample_num, tree=X_tree, default_offset=1,
+                 X_tree=X_tree, Y_tree=Y_tree)
+    _k = partial(__get_epsilon_sample_num, tree=Y_tree, default_offset=0,
+                 X_tree=X_tree, Y_tree=Y_tree)
     return psi(_l(x)) - psi(_k(x))
